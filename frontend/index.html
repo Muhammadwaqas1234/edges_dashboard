@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edge Detection Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Edge Detection Dashboard</h1>
+
+        <div class="upload-section">
+            <div class="preview-box">
+                <img id="previewImg" src="" alt="Preview Image">
+            </div>
+            <div class="upload-controls">
+                <input type="file" id="imageInput" accept="image/*">
+                <button onclick="processImage()">Process Image</button>
+            </div>
+        </div>
+
+        <div class="params-section">
+            <h2>Parameters</h2>
+
+            <div class="param">
+                <label>Gaussian Blur Kernel (<span id="blur_ksize_val">5</span>)</label>
+                <input type="range" id="blur_ksize" min="1" max="15" step="2" value="5" oninput="document.getElementById('blur_ksize_val').innerText=this.value">
+            </div>
+
+            <div class="param">
+                <label>Blur Sigma (<span id="blur_sigma_val">0.0</span>)</label>
+                <input type="range" id="blur_sigma" min="0" max="10" step="0.1" value="0.0" oninput="document.getElementById('blur_sigma_val').innerText=this.value">
+            </div>
+
+            <div class="param">
+                <label>Sobel Kernel (<span id="sobel_ksize_val">3</span>)</label>
+                <input type="range" id="sobel_ksize" min="1" max="7" step="2" value="3" oninput="document.getElementById('sobel_ksize_val').innerText=this.value">
+            </div>
+
+            <div class="param">
+                <label>Canny Low (<span id="canny_low_val">50</span>)</label>
+                <input type="range" id="canny_low" min="0" max="255" value="50" oninput="document.getElementById('canny_low_val').innerText=this.value">
+            </div>
+
+            <div class="param">
+                <label>Canny High (<span id="canny_high_val">150</span>)</label>
+                <input type="range" id="canny_high" min="0" max="255" value="150" oninput="document.getElementById('canny_high_val').innerText=this.value">
+            </div>
+
+            <div class="param">
+                <label>Thickness (<span id="thickness_val">1</span>)</label>
+                <input type="range" id="thickness" min="1" max="10" value="1" oninput="document.getElementById('thickness_val').innerText=this.value">
+            </div>
+        </div>
+
+        <div class="output-section">
+            <h2>Results</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>Sobel</h3>
+                    <img id="sobelImg">
+                </div>
+                <div class="result-card">
+                    <h3>Laplacian</h3>
+                    <img id="lapImg">
+                </div>
+                <div class="result-card">
+                    <h3>Canny</h3>
+                    <img id="cannyImg">
+                </div>
+                <div class="result-card">
+                    <h3>Scharr</h3>
+                    <img id="scharrImg">
+                </div>
+                <div class="result-card">
+                    <h3>Histogram</h3>
+                    <img id="histogramImg">
+                </div>
+                <div class="result-card">
+                    <h3>HOG</h3>
+                    <img id="hogImg">
+                </div>
+            </div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <span>Processing...</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
