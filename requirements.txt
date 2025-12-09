@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+opencv-python
+numpy==1.26.4
+python-multipart
+scikit-image
